@@ -1,33 +1,38 @@
-// Dispositivo: digital (push button)
+/*
+  Dispositivo: push button
 
-// Salida: puerto serie (presencia)
+  Entrada: digital
+  Salida: puerto serie
+*/
 
-int iPinSensor = 2;
+// Pin digital
+int iPin_PushButton = 2;
 
 void setup()
 {
   Serial.begin(9600);
+
   /*
-     Inicializamos el puerto serie definiendo
+     Inicialización del puerto serie definiendo
      la velocidad de transmisión en baudios (bps).
 
-     Entre los dispositivos que se realiza la 
+     Entre los dispositivos que se realiza la
      transmisión deben poseer el mismo baudaje;
-     9600 es el estandar.
+     9600 es el estándar.
 
      'Serial' es un objeto y 'begin' es un método
      de la clase 'HardwareSerial'.
   */
 
-  pinMode(iPinSensor, INPUT);
   // Pin digital como entrada
+  pinMode(iPin_PushButton, INPUT);
 }
 
 void loop()
 {
-  if (digitalRead(iPinSensor))
-  { // Estado HIGH o LOW del pin digital
-
+  // Lectura de entrada digital
+  if (digitalRead(iPin_PushButton))
+  {
     Serial.println("Objeto posicionado");
   }
   else
@@ -35,6 +40,7 @@ void loop()
     Serial.println("No hay objeto...");
   }
   delay(1000);
+
   /*
      Importancia de la función 'delay':
 

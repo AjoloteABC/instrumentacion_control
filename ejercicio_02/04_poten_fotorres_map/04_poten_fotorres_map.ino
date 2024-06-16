@@ -1,6 +1,8 @@
 /*
-  Dispositivo: analógico (potenciómetro o fotorresistencia)
-  Salida: puerto serie (ángulo y porcentaje)
+  Dispositivo: potenciómetro o fotorresistencia
+
+  Entrada: analógica
+  Salida: puerto serie
 */
 
 // Pin analógico
@@ -13,8 +15,13 @@ int iLecADC_Sensor;
 int iMap_Grados;
 int iMap_Porcentaje;
 
-// Tamaño del arreglo de caracteres
-// que almacenará la cadena formateada
+/*
+  Tamaño del arreglo de caracteres
+  que almacenará la cadena formateada,
+  incluyendo el carácter nulo (\0) que
+  marca el final de la cadena en C.
+*/
+
 char buffer[30];
 
 void setup()
@@ -30,7 +37,7 @@ void loop()
 
   // Mapeo de los niveles de cuantificación
   // map(var_entrada, entrada_min, entrada_max, salida_min, salida_max);
-  
+
   iMap_Grados = map(iLecADC_Sensor, 0, 1023, 0, 270);
   iMap_Porcentaje = map(iLecADC_Sensor, 0, 1023, 0, 100);
 
